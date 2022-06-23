@@ -1,14 +1,17 @@
 <template>
   <the-header title="My Bucketlist"></the-header>
+  <the-bucket-list></the-bucket-list>
 </template>
 
 <script>
 
 import TheHeader from './components/layout/TheHeader.vue';
+import TheBucketList from './components/main_components/TheBucketList.vue';
 
 export default {
   components: {
-    TheHeader
+    TheHeader,
+    TheBucketList
   }
 }
 </script>
