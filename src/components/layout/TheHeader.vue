@@ -12,7 +12,7 @@ export default {
 }
 </script>
 
-<style defer>
+<style scoped>
 
 header {
     background-color: rgb(77, 120, 77);
