@@ -1,6 +1,5 @@
 <template>
     <ul>
-        test
         <bucket-list-items
         v-for="res in resources"
         :key="res.title"

@@ -1,5 +1,4 @@
 <template>
-    <div>
        <content-card>
             <base-button 
             :mode="bucketListButtonMode"
@@ -17,16 +16,15 @@
         <keep-alive>
             <component :is="selectedTab"></component>
         </keep-alive>
-    </div>
 </template>
 
 <script>
 
-import Bucketlist from './BucketList.vue';
+import BucketList from './BucketList.vue';
 
 export default {
-    component: {
-        Bucketlist
+    components: {
+        BucketList
     },
     data() {
         return {
@@ -66,7 +64,7 @@ export default {
     methods: {
         setSelectedTab(tab) {
             this.selectedTab = tab;
-        }
-    }
-}
+        },
+    },
+};
 </script>
