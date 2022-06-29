@@ -14,20 +14,43 @@
             @click="setSelectedTab('completed')"
             >Completed</base-button>
         </content-card>
-        <content-card>
-            my bucket list
-        </content-card>
+        <keep-alive>
+            <component :is="selectedTab"></component>
+        </keep-alive>
     </div>
 </template>
 
 <script>
 
+import Bucketlist from './BucketList.vue';
 
 export default {
+    component: {
+        Bucketlist
+    },
     data() {
         return {
-            selectedTab: 'bucket-list'
+            selectedTab: 'bucket-list',
+            storedResources: [
+                {
+                    title: 'lose weight',
+                    description: 'Achieve my ideal weight'
+                },
+                {
+                    title: 'balloon flight',
+                    description: 'Fly in a hot-air balloon'
+                },
+                {
+                    title: 'northern light',
+                    description: 'See the Northern Lights'
+                }
+            ]
         }
+    },
+    provide() {
+        return {
+            resources: this.storedResources
+        };
     },
     computed: {
         bucketListButtonMode() {
