@@ -2,7 +2,8 @@
     <ul>
         <bucket-list-items
         v-for="res in resources"
-        :key="res.title"
+        :key="res.id"
+        :id="res.id"
         :title="res.title"
         :description="res.description"
         ></bucket-list-items>
@@ -21,5 +22,5 @@ export default {
 </script>
 
 <style scoped>
-
+   
 </style>

@@ -31,14 +31,17 @@ export default {
             selectedTab: 'bucket-list',
             storedResources: [
                 {
+                    id: 'weight',
                     title: 'lose weight',
                     description: 'Achieve my ideal weight'
                 },
                 {
+                    id: 'balloon',
                     title: 'balloon flight',
                     description: 'Fly in a hot-air balloon'
                 },
                 {
+                    id: 'northernlight',
                     title: 'northern light',
                     description: 'See the Northern Lights'
                 }
@@ -47,7 +50,8 @@ export default {
     },
     provide() {
         return {
-            resources: this.storedResources
+            resources: this.storedResources,
+            deleteItem: this.removeItem
         };
     },
     computed: {
@@ -65,6 +69,10 @@ export default {
         setSelectedTab(tab) {
             this.selectedTab = tab;
         },
+        removeItem(itemId) {
+            const itemIndex = this.storedResources.findIndex(res => res.id == itemId);
+            this.storedResources.splice(itemIndex, 1);
+        }
     },
 };
 </script>
