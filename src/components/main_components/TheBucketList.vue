@@ -10,7 +10,7 @@
             >Add new activity</base-button>
             <base-button 
             :mode="CompletedButtonMode"
-            @click="setSelectedTab('completed')"
+            @click="setSelectedTab('completed-activity')"
             >Completed</base-button>
         </content-card>
         <keep-alive>
@@ -21,10 +21,14 @@
 <script>
 
 import BucketList from './BucketList.vue';
+import AddNewActivity from './AddNewActivity.vue';
+import CompletedActivity from './CompletedActivity.vue';
 
 export default {
     components: {
-        BucketList
+        BucketList,
+        AddNewActivity,
+        CompletedActivity
     },
     data() {
         return {
@@ -62,7 +66,7 @@ export default {
             return this.selectedTab == 'add-new-activity' ? 'highlight' : null;
         },
         CompletedButtonMode() {
-            return this.selectedTab == 'completed' ? 'highlight' : null;
+            return this.selectedTab == 'completed-activity' ? 'highlight' : null;
         }
     },
     methods: {
