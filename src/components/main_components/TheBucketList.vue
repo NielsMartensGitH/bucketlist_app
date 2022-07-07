@@ -55,7 +55,8 @@ export default {
     provide() {
         return {
             resources: this.storedResources,
-            deleteItem: this.removeItem
+            deleteItem: this.removeItem,
+            addItem: this.addNewItem
         };
     },
     computed: {
@@ -76,6 +77,16 @@ export default {
         removeItem(itemId) {
             const itemIndex = this.storedResources.findIndex(res => res.id == itemId);
             this.storedResources.splice(itemIndex, 1);
+        },
+        addNewItem(title, description) {
+            const newItem = {
+                id: new Date().toISOString(),
+                title: title,
+                description: description
+            };
+            console.log(newItem);
+            this.storedResources.unshift(newItem);
+            this.selectedTab = 'bucket-list';
         }
     },
 };
