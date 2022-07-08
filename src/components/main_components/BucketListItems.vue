@@ -1,9 +1,22 @@
 <template>
+    <base-modal title="Are you sure?" v-if="showModal" @close="closeModal">
+        <template #default>
+            <p>You are about to mark a bucketlist item as completed.</p>
+            <p>Are you sure you want to do this?</p>
+        </template>
+        <template #actions>
+             <base-button :mode="'highlight-green'">Yes</base-button>
+             <base-button :mode="'highlight'">No</base-button>
+        </template>
+    </base-modal>
     <li>
         <content-card>
             <header>
                 <h2> {{title}} </h2>
-                <base-button :mode="'highlight'" @click="deleteItem(id)">Delete</base-button>
+                <div>
+                    <base-button :mode="'highlight-green'" @click="openModal">Finished</base-button>
+                    <base-button :mode="'highlight'" @click="deleteItem(id)">Delete</base-button>
+                </div>
             </header>
             <p> {{ description }} </p>
         </content-card>
@@ -15,7 +28,22 @@
 
 export default {
     props: ['id','title', 'description'],
-    inject: ['deleteItem']
+    inject: ['deleteItem'],
+    data() {
+        return {
+            showModal: false
+        }
+    },
+    methods: {
+        openModal() {
+            this.showModal = true;
+            return;
+        },
+        closeModal() {
+            this.showModal = false;
+            return;
+        }
+    }
 }
 </script>
 
