@@ -49,14 +49,17 @@ export default {
                     title: 'northern light',
                     description: 'See the Northern Lights'
                 }
-            ]
+            ],
+            completedResources: []
         }
     },
     provide() {
         return {
             resources: this.storedResources,
             deleteItem: this.removeItem,
-            addItem: this.addNewItem
+            addItem: this.addNewItem,
+            setCompleted: this.setCompleted,
+            completed: this.completedResources
         };
     },
     computed: {
@@ -87,6 +90,17 @@ export default {
             console.log(newItem);
             this.storedResources.unshift(newItem);
             this.selectedTab = 'bucket-list';
+        },
+        setCompleted(id) {
+            const index = this.storedResources.findIndex(res => res.id == id);
+            const newCompleted = {
+                id: this.storedResources[index].id,
+                title: this.storedResources[index].title,
+                description: this.storedResources[index].description
+            }
+            this.removeItem(id);
+            this.completedResources.unshift(newCompleted);
+            this.selectedTab = 'completed-activity';
         }
     },
 };

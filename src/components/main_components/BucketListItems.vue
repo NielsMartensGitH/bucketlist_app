@@ -5,8 +5,8 @@
             <p>Are you sure you want to do this?</p>
         </template>
         <template #actions>
-             <base-button :mode="'highlight-green'">Yes</base-button>
-             <base-button :mode="'highlight'">No</base-button>
+             <base-button :mode="'highlight-green'" @click="setCompleted(id); closeModal()">Yes</base-button>
+             <base-button :mode="'highlight'" @click="closeModal">No</base-button>
         </template>
     </base-modal>
     <li>
@@ -28,7 +28,7 @@
 
 export default {
     props: ['id','title', 'description'],
-    inject: ['deleteItem'],
+    inject: ['deleteItem', 'setCompleted'],
     data() {
         return {
             showModal: false
